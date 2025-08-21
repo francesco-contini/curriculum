@@ -1,0 +1,1771 @@
+% \iffalse meta-comment
+%<*internal>
+\begingroup
+\input docstrip
+\preamble
+----------------------------------------
+
+Francesco Contini, La classe curriculum,
+doc. lang. italian, Cagliari 2025.
+
+Copyright (C) 2025 Francesco Contini
+
+This work consists of the README.md, the
+curriculum.dtx and the derived:
+- curriculum.cls,
+- curriculum.xmpdata,
+- curriculum.bib,
+- curriculum.pdf.
+The .pdf derived refers to the preamble,
+from the .dtx source, and reproduces its
+its text.
+The work may be distributed and modified
+under the conditions of the ``LaTeX Proj
+ect Public License,'' either version 1.3
+of the the license or at your option any
+later version. For the latest version of
+this license see the url below.
+The product has got the LPPL maintenance
+status `maintained'.
+The maintainer of this work is Francesco
+Contini. Email to francescocontini98[at]
+gmail[dot]com to claim and feed back, or
+to get a clarification.
+
+ https://www.latex-project.org/lppl.txt
+
+----------------------------------------
+\endpreamble
+\postamble
+----------------------------------------
+
+Francesco Contini, The curriculum class,
+Cagliari 2025.
+
+Copyright (C) 2025 Francesco Contini
+
+Available under the LaTeX Project Public
+License,  which is published on https://
+www.latex-project.org/lppl.txt.
+
+---------------------------------------
+\endpostamble
+\keepsilent
+\askforoverwritefalse
+
+\Msg{*** Generating the style file ***}
+\generate{
+    \file{curriculum.cls}{\from{curriculum.dtx}{class}}
+    \file{curriculum.xmpdata}{\from{curriculum.dtx}{data}}
+    \file{curriculum.bib}{\from{curriculum.dtx}{bib}}}
+
+\obeyspaces
+\Msg{                                                  }
+\Msg{                                                  }
+\Msg{**************************************************}
+\Msg{*                                                *}
+\Msg{* To finish the installation, move the following *}
+\Msg{* files into a directory searched by TeX.        *}
+\Msg{*                                                *}
+\Msg{* curriculum.cls                                 *}
+\Msg{* curriculum.pdf                                 *}
+\Msg{* README.md                                      *}
+\Msg{*                                                *}
+\Msg{* To produce the documentation, run the dtx file *}
+\Msg{* from a shell through LaTeX. See the README for *}
+\Msg{* for more details.                              *}
+\Msg{**************************************************}
+\Msg{                                                  }
+\Msg{                                                  }
+\ifx\directlua\undefined
+\Msg{**************************************************}
+\Msg{* LuaLaTeX engine not detected.                  *}
+\Msg{* Executing \string\endbatchfile.                       *}
+\Msg{**************************************************}
+\Msg{                                                  }
+\Msg{                                                  }
+\endbatchfile
+\else
+\Msg{**************************************************}
+\Msg{* LuaLaTeX engine detected.                      *}
+\Msg{* Skipping \string\endbatchfile.                        *}
+\Msg{**************************************************}
+\Msg{                                                  }
+\Msg{                                                  }
+\fi
+\endgroup
+%</internal>
+% \fi
+%
+%
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{curriculum.dtx}
+%</driver>
+%
+%
+%
+%<class>\NeedsTeXFormat{LaTeX2e}
+%<class>\ProvidesClass{curriculum}
+%<*class>
+    [2025/08/19 v.1.0 Curriculum]
+
+%</class>
+%
+%
+%
+%<*driver>
+\documentclass[12pt]{ltxdoc}
+% --------------------------------------------------------
+% TYPEFONT SETUP
+% --------------------------------------------------------
+\usepackage[osf]{libertinus}
+% --------------------------------------------------------
+% LANGUAGE SETUP
+% --------------------------------------------------------
+\usepackage{polyglossia}
+    \setmainlanguage{italian}
+    \setotherlanguage[variant=british]{english}
+    \setotherlanguage{french}
+    \SetLanguageKeys{italian}{indentfirst=false}
+    \usepackage{fmtcount}
+    \RequirePackage{itnumpar}
+    \FCloadlang{italian}
+%--------------------------------------------------------
+% GRAPHICS AND CODES
+%--------------------------------------------------------
+\usepackage{xcolor}
+    \definecolor{cvgray}{gray}{0.25}
+    \definecolor{cvblue}{rgb}{0.25,0.25,0.50}
+    \definecolor{cvdarkblue}{rgb}{0.0,0.0,0.25}
+    \definecolor{cvgreen}{rgb}{0.25,0.50,0.25}
+    \definecolor{cvred}{rgb}{0.75,0.0,0.0}
+    \definecolor{cvyellow}{rgb}{0.95,0.65,0.25}
+    \definecolor{lightgray}{gray}{0.975}
+    \definecolor{lightblue}{rgb}{0.95,0.95,1.00}
+\usepackage{listings}
+    \lstdefinestyle{fromthesource}{%
+        inputencoding=utf8,
+        frame=lines,
+        basicstyle=\ttfamily\small,
+        backgroundcolor=\color{lightgray},
+        commentstyle=\sffamily\em\color{cvgray},
+        comment=[l]{\%},
+        keywordstyle=\color{cvred},
+        numberstyle=\tiny\color{cvred},
+        stringstyle=\color{cvred},
+        breakatwhitespace=true,
+        breaklines=true,
+        keepspaces=false,
+        aboveskip=\bigskipamount,
+        belowskip=\bigskipamount,
+        captionpos=b,
+        belowcaptionskip=0pt,
+        numbers=none,
+        showtabs=true,
+        showspaces=true,
+        showstringspaces=true,
+        numberbychapter=false,
+        extendedchars=false}
+    \lstdefinestyle{inputexample}{%
+        inputencoding=utf8,
+        frame=lines,
+        basicstyle=\ttfamily\small\color{cvblue},
+        backgroundcolor=\color{lightblue},
+        commentstyle=\normalfont\sffamily\em\color{cvgray},
+        comment=[l]{\%},
+        keywordstyle=\color{cvyellow},
+        numberstyle=\tiny\color{cvred},
+        stringstyle=\color{cvdarkblue},
+        breakatwhitespace=true,
+        breaklines=true,
+        keepspaces=false,
+        captionpos=b,
+        belowcaptionskip=0pt,
+        numbers=left,
+        numbersep=10pt,
+        stepnumber=5,
+        numberfirstline=false,
+        firstnumber=1,
+        numberbychapter=false,
+        aboveskip=0.5pc,belowskip=0.5pc}
+\renewcommand\lstlistlistingname{Lista dei codici illustrativi}
+\renewcommand{\lstlistingname}{Codice}
+% --------------------------------------------------------
+% OTHER PACKAGES
+% --------------------------------------------------------
+\usepackage[style=accursius,alldates=short]{biblatex}
+    \addbibresource{curriculum.bib}
+\usepackage{caption}
+    \captionsetup{font=small,textformat=period}
+\usepackage[style=italian]{csquotes}
+\usepackage[ddmmyyyy]{datetime}
+    \newcommand{\defaulttoday}
+        {\twodigit{\day}.\twodigit{\month}.\twodigit{\year}}
+\usepackage{fontawesome}
+\usepackage{graphicx}
+\usepackage{lettrine}
+\usepackage{paralist}
+    \usepackage{enumitem}
+        \setlist[itemize]{label={-},noitemsep,topsep=0pt}
+        \setlist[enumerate]{noitemsep,topsep=0pt}
+        \setlist[description]{noitemsep,topsep=0pt}
+% --------------------------------------------------------
+% HYPERREF SETUP
+% --------------------------------------------------------
+\usepackage{luatex85}
+\usepackage[a-1a]{pdfx}
+\usepackage[pdfa]{hyperref}
+% --------------------------------------------------------
+% FINAL COMMANDS
+% --------------------------------------------------------
+\newrobustcmd*{\emphitem}[1]{\textcolor{rdarkgray}{\emph{#1}}}
+\raggedbottom
+\newcommand{\omissis}{[\ldots\unkern]}
+\newcommand{\changecapital}[1]{[#1\unkern]}
+\EnableCrossrefs
+\RecordChanges
+\begin{document}
+    \DocInput{curriculum.dtx}
+    \PrintChanges
+\end{document}
+%
+%</driver>
+% \fi
+%
+% \CheckSum{953}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \changes{v. 1.0}{2025/08/19}{Versione iniziale}
+%
+% \GetFileInfo{curriculum.cls}
+% \DoNotIndex{\newcommand,\newenvironment}
+%
+% \author{Francesco Contini}
+% \title{La classe \textsf{curriculum}}
+% \date{Cagliari, \defaulttoday}
+% \maketitle
+% \tableofcontents
+% \clearpage
+%
+% \section*{The license and the \texttt
+%        {.dtx} source file}
+% \iffalse
+%<*example>
+% \fi
+\begin{lstlisting}[style=fromthesource,
+    nolol,showspaces=false]
+Francesco Contini, La classe curriculum,
+doc. lang. italian, Cagliari 2025.
+
+Copyright (C) 2025 Francesco Contini
+
+This work consists of the README.md, the
+curriculum.dtx and the derived:
+- curriculum.cls,
+- curriculum.xmpdata,
+- curriculum.bib,
+- curriculum.pdf.
+The .pdf derived refers to the preamble,
+from the .dtx source, and reproduces its
+its text.
+The work may be distributed and modified
+under the conditions of the ``LaTeX Proj
+ect Public License,'' either version 1.3
+of the the license or at your option any
+later version. For the latest version of
+this license see the url below.
+The product has got the LPPL maintenance
+status `maintained'.
+The maintainer of this work is Francesco
+Contini. Email to francescocontini98[at]
+gmail[dot]com to claim and feed back, or
+to get a clarification.
+
+ https://www.latex-project.org/lppl.txt
+\end{lstlisting}
+% \iffalse
+%</example>
+% \fi
+%
+% \clearpage
+% \author{Francesco Contini}
+% \title{La classe \textsf{curriculum}}
+% \date{Cagliari, \defaulttoday}
+% \maketitle
+% \section{Istruzioni per l'uso}
+% \subsection{Motivi d'una nuova
+%    classe di \textit{cv}}
+% \lettrine{L}{a scrittura} d'un \textit
+% {curriculum vitae et studiorum} segue,
+% di volta in volta, regole diverse.  Il
+% contenuto e la stessa formattazione, %
+% infatti, dipendono dal destinatario %%
+% del \textit{cv}.
+%
+% Esistono numerosi \textit{softwares} %
+% per scrivere un \textit{cv}.  Basta un
+% un comune \textit{word processor} allo
+% scopo. Sono molteplici gli applicativi
+% in rete. Tra questi, \textit{europass}
+% è lo strumento ufficiale per l'omonimo
+% \textit{standard} e trova,  in \LaTeX,
+% un'imitazione affidabile nel lavoro di
+% \citeauthor{mazzamuto2020}.\footnote%%
+% {Vedi \cite{mazzamuto2020}.}
+%
+% In generale, su \LaTeX\ esistono già %
+% lavori che offrono, in sostanza, dei %
+% modelli  per  un \textit{cv}.\footnote
+% {\`{E} decisamente valido il lavoro di
+% \cite{danaux2024}.  Per altri modelli,
+% \cite{prasad2023}; \cite{scrivena2018};
+% \cite{ghersi2012}; \cite{verna2010}; %
+% \cite{maier2001}.}
+%
+% \`{E} per questo che ritengo di non %%
+% dover depositare questa classe sul %%%
+% \textsc{ctan}  e di limitarmi, invece,
+% a caricarla su \citelist{contini2025}%
+% {organization}.\footnote{Visita \cite%
+% {contini2025}.}  In effetti, questa %%
+% classe, \textsf{curriculum}, ha più %%
+% ragioni personali —~quelle di chi è %%
+% alla ricerca d'un \textit{cv} fatto %%
+% bene~— che di condivisione. Il momento
+% di diffusione è più un'opportunità che
+% viene a valle, insomma.
+%
+% Questa classe persegue l'obiettivo %%%
+% della semplicità nella scrittura del %
+% \textit{cv}.  È la semplicità di chi %
+% non necessita di funzioni particolari,
+% ma solo di dare un resoconto assai %%%
+% sommario, del percorso formativo e del
+% \enquote{\textit{cursus honorum}.}  La
+% sobrietà di questa classe è quasi %%%%
+% rigida, perché trova temperamento solo
+% nell'elemento decorativo dei colori, %
+% che, di \textit{default}, marcano le %
+% intestazioni e attenuano la lettura %%
+% del testo.
+%
+% Certo, un \textit{cv} non è il luogo %
+% dove fare sfoggio concreto di capacità
+% editoriali e tipografiche: serve per %
+% presentare se stessi —~semmai, cioè, %
+% per indicare queste capacità~—.  Però,
+% è altrettanto certo che funzioni più %
+% elaborate necessitano dell'impiego %%%
+% d'altre classi \LaTeX.
+%
+% \subsection{I dati personali}
+% La classe riproduce i dati personali %
+% nell'intestazione del \textit{cv} e, %
+% in parte,  nelle testatine e nei piedi
+% delle eventuali pagine successive alla
+% prima.  Il resto della pagina, secondo
+% questo schema, è il luogo per le altre
+% informazioni:  quelle che, più che %%%
+% identificare la persona, servono a %%%
+% distinguerla dalla generalità sotto il
+% profilo strettamente professionale.
+%
+% \DescribeMacro{\maketitle} Dunque, i %
+% dati personali sono quelli che servono
+% a identificare la persona fisica. Il %
+% luogo per la loro riproduzione è %%%%%
+% l'intestazione del documento.  Proprio
+% per questo, la classe ridefinisce %%%%
+% \texttt{\textbackslash maketitle}.
+%
+% I dati personali obbligatori sono il %
+% nome e il cognome,  i cui comandi sono
+% \texttt{\textbackslash name} e \texttt
+% {\textbackslash surname}.  Tutti gli %
+% altri dati personali sono facoltativi.
+% Sono tutti comandi con argomento che è
+% obbligatorio.
+%
+% Di seguito, il riepilogo di tutti i %%
+% dati personali.
+% \begin{description}[%
+%         font=\normalfont\ttfamily \textbackslash]
+%     \item[name] il nome, obbligatorio;
+%     \item[surname] il cognome, anche %
+%         questo obbligatorio;
+%     \item[position] il mestiere o il %
+%         titolo;
+%     \item[birthday] data di nascita; %
+%     \item[gender] il genere, con testo
+%         vincolato, associato all'icona
+%         binaria, come segue:
+%         \begin{inparaenum}[\slshape a.]
+%             \item \texttt{F},
+%             \item \texttt{f},
+%             \item \texttt{Female},
+%             \item \texttt{female},
+%             \item \texttt{Woman},
+%             \item \texttt{woman},
+%             \item \texttt{Femmina},
+%             \item \texttt{femmina},
+%             \item \texttt{Donna},
+%             \item \texttt{donna},
+%             \item \texttt{M},
+%             \item \texttt{m},
+%             \item \texttt{Male},
+%             \item \texttt{male},
+%             \item \texttt{Man},
+%             \item \texttt{man},
+%             \item \texttt{Maschio},
+%             \item \texttt{maschio},
+%             \item \texttt{Uomo} e
+%             \item \texttt{uomo},
+%             \item ma anche un'altra %%
+%                 stringa va bene, per %
+%                 quanto privo d'icona %
+%                 associata;
+%         \end{inparaenum}
+%     \item[addresslineone] la prima %%%
+%                 riga dell'indirizzo; %
+%     \item[addresslinetwo] la seconda %
+%                 riga dell'indirizzo; %
+%     \item[email] indirizzo di posta %%
+%                 elettronica ordinaria;
+%     \item[pec] indirizzo \textsc{pec};
+%     \item[phone] numero di telefono; %
+%     \item[fax] numero di \textit{fax};
+%     \item[linkedin] l'identificativo %
+%                 del profilo \textit%%%
+%                 {linkedin} e
+%     \item[github] l'identificativo del
+%                 profilo \textit{GitHub}.
+% \end{description}
+% Pertanto, l'omissione di questi dati %
+% non comporta errori nella compilazione
+% del \textit{cv}.
+%
+% \DescribeMacro{\portrait}
+% A scelta, è possibile inserire anche %
+% una foto,  con  \texttt{\textbackslash
+% portrait}, inserendo in argomento il %
+% nome del \textit{file}, estensione %%%
+% compresa.
+%
+% \iffalse
+%<*example>
+% \fi
+\begin{lstlisting}[caption={Esempio di
+    dati personali in \textit{cv}},
+    style=inputexample,showspaces=false,
+    label={code:exampledatas}]
+\documentclass{curriculum}
+    \name{Nome}
+    \surname{Cognome}
+    \position{Laureata}
+    \birthday{01.01.2000}
+    \gender{donna}
+
+    \addresslineone{via delle Lumache, 15}
+    \addresslinetwo{00100 -- Roma, Italia}
+    \email{username@domain.com}
+    \pec{username@pecdomain.com}
+    \phone{+39 06 0000 0000}
+    \fax{+39 06 0000 0000}
+    \mobile{+39 300 000 0000}
+    \github{username}
+    \linkedin{username}
+
+    \portrait{mishlanova-unsplash.jpg}
+
+\begin{document}
+    \maketitle
+\end{document}
+\end{lstlisting}
+% \iffalse
+%</example>
+% \fi
+%
+% Con tutti questi dati, è già possibile
+% redigere l'intestazione del documento,
+% comprensiva pure di foto.\footnote%%%%
+% {La foto profila usata negli esempi  è
+% tratta, in \textit{opensource}, da %%%
+% \textsf{\citelist{mishlanova2021}{organization}}.
+% Autrice è \citeauthor{mishlanova2021}.
+% Vedi \cite{mishlanova2021}.}
+%
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=\textwidth]
+%         {maketitle.pdf}
+%     \label{fig:exampledatas}
+%     \caption{Anteprima del codice \ref
+%         {code:exampledatas}}
+% \end{figure}
+%
+% Non rientrano tra i dati personali, ma
+% trovano un \textit{output} nel comando
+% \texttt{\textbackslash maketitle}, %%%
+% l'informazione del luogo in cui l'utente
+% sta redigendo il \textit{cv} e una %%%
+% stringa introduttiva di data e luogo %
+% del \textit{cv} stesso.  La classi, %%
+% quindi, mette a disposizione ulteriori
+% due comandi, che sono facoltativi, con
+% un argomento obbligatorio.
+%
+% \DescribeMacro{\place}  Col comando %%
+% \textsf{place} l'utente indica da dove
+% sta compilando il suo \textit{cv}.  La
+% classe stampa sempre questo dato, se %
+% presente, sia in intestazione, sempre,
+% sia nello spazio dedicato alla %%%%%%%
+% sottoscrizione del \textit{cv}.  Il %%
+% dato precede sempre la data di %%%%%%%
+% compilazione del documento.
+%
+% \LaTeX\ calcola automaticamente la %%%
+% data di compilazione, che stampa in %%
+% ogni caso.
+%
+% \DescribeMacro{\beforedate}
+% La classe offre anche un comando per %
+% scrivere una stringa,  in intestazione
+% al \textit{cv}, a precere la data e, %
+% se data,  la località di compilazione.
+% Per eccellenza,  l'argomento di questo
+% di comando si presta a specificare %%%
+% che la data si riferisce all'ultimo %%
+% aggiornamento del documento. La classe
+% stampa questo campo in tondo e,  senza
+% segni di punteggiatura,  lo fa seguire
+% dallo spazio e dal luogo, se dato, o %
+% direttamente dalla data di compilazione.
+%
+% \subsection{Impostazioni di riservatezza}
+% Di base, la classe stampa tutti i dati
+% personali che l'utente abbia dato.
+%
+% Come soluzione alla volontà di non %%%
+% stampare un certo dato, l'utente può %
+% semplicemente ricorrere all'omissione,
+% cancellando il comando, così come %%%%
+% nascondendolo col segno di commento %%
+% \%.
+%
+% Infatti, a parte \textsf{name} e \textsf
+% {surname}, tutti gli altri dati %%%%%%
+% personali sono facoltativi.
+%
+% Tuttavia, è possibile, comunque,  dare
+% anche tutti i dati personali, ma dare,
+% al contempo, indicazione di non %%%%%%
+% stamparli.  \`{E} un meccanismo che %%
+% viene in contro, soprattutto, a chi %%
+% scrive più \textit{cv} destinati a più
+% destinatari, o anche alla pubblicazione.
+% In un'eventualità del genere, forse, è
+% più comodo disporre d'un \textit{input}
+% completo di dati, di cui fare copia e,
+% poi, da modificare inserendo l'opzione
+% per la riservatezza, anzi che cancellando
+% i dati.
+%
+% A questo scopo, la classe definisce %%
+% varie opzioni, alcune cumulabili e %%%
+% altre che s'assorbono,  per nascondere
+% uno o più dati personali.
+%
+% \DescribeMacro{public} L'opzione %%%%%
+% \texttt{public} oscura tutti i dati %%
+% utili a rintracciare fisicamente o %%%
+% digitalmente l'intestatario e cioè %%%
+% l'indirizzo e i numero di telefono e %
+% \textit{fax}, l'indirizzo \textsc{pec}
+% e, infine, il numero di cellulare.  Si
+% presta, insomma, molto bene ai \textit
+% {cv} destinati alla pubblicazione, %%%
+% specie in adempimento agli obblighi di
+% trasparenza —~in particolare, gravanti
+% sulle pubbliche amministrazioni~—.
+%
+% \DescribeMacro{privacy} L'opzione %%%%
+% \texttt{privacy} attiva, anzitutto, %%
+% l'opzione \texttt{public}. In aggiunta
+% nasconde il compleanno e il genere.
+%
+% \DescribeMacro{letterhead} L'opzione %
+% \texttt{letterhead} salta data di %%%%
+% nascita e genere e, soprattutto, non %
+% stampa la fotografia, a prescindere %%
+% che sia caricata o meno.  Questa si %%
+% presta, soprattutto, per documenti che
+% vogliono, comunque, basarsi sulla %%%%
+% classe \textsf{curriculum}, ma che non
+% vogliono essere un \textit{cv}, né una
+% lettera introduttiva o motivazionale %
+% connessa a un \textit{cv}.
+%
+% Ulteriori due opzioni sono assorbite %
+% dalle precedenti,  pur niente vietando
+% il loro autonomo impiego.
+%
+% \DescribeMacro{nobirthdaynogender} Una
+% è quella per sopprimere il genere e le
+% data di nascita.
+%
+% \DescribeMacro{noaddress}  L'altra è %
+% per saltare l'indirizzo fisico e %%%%%
+% quello \textsc{pec}, oltre ai numeri %
+% di telefono e \textit{fax}.
+%
+% \subsection{Decorazione del \textit{cv}}
+% \DescribeMacro{blackandwhite}
+% Il \textit{cv} è, di base, decorato %%
+% col colore verde e col colore blu. %%%
+% In particolare, il testo corrente è in
+% una tonalità scura di blu, mentre i %%
+% titoli delle sezioni e il nome in %%%%
+% intestazione sono in una tonalità scura
+% di verde.
+%
+% Tuttavia, l'utente può specificare, %%
+% nel comando   \texttt  {\textbackslash
+% document class}, l'opzione \texttt  %%
+% {blackandwhite}, affinché il \textit%%
+% {cv} sia, appunto, in bianco e nero.
+%
+% \subsection{Testatine del documento}
+% Il \textit{cv} non ha, di base, alcuna
+% testatina o piedino, a meno che non %%
+% sia lungo due o più pagine.
+%
+% In quest'eventualità, le sole pagine %
+% seconda e, eventualmente, successive %
+% hanno una testatina e un piedino.
+%
+% La testatina indica il nome completo e
+% la posizione, se data, dell'utente.
+%
+% Il piedino indica il numero di pagina,
+% nonché il numero totale delle paginae,
+% a destra.  Al centro, invece, il %%%%%
+% piedino indica alcuni dati personali,
+% compatibilmente con le impostazioni di
+% di riservatezza che l'utente abbia %%%
+% dato.
+%
+% \subsection{Il corpo del \textit{cv} e
+%     le sue sezioni}
+% Finita l'intestazione del \textit{cv},
+% ne segue il corpo.  Come da buona %%%%
+% prassi,  un buon \textit{cv} si divide
+% in sezioni, tra le quali le diverse %%
+% informazioni si ripartiscono secondo %
+% un certo ordine.
+%
+% Le due sezioni importanti sono quelle
+% relative alle attività lavorative in %
+% corso e passate e all'esperienza  %%%%
+% formativa, cui accedono sezioni meno %
+% rigide e vincolate, quali quelle che %
+% riepilogano le competenze, tra cui le
+% c.d\@. \textit{soft skills}.
+%
+% \DescribeMacro{\section} La classe
+% \textsf{curriculum} conferma il tipico
+% sezionamento \textit{standard} di %%%%
+% \LaTeX.  Sotto il profilo visivo, la %
+% classe \textsf{curriculum} evidenzia %
+% il primo livello di sezionamento con %
+% un titolo indentato e in maiuscoletto.
+% L'indentazione è decorata con una %%%%
+% linea spessa 0.4pt, a rimarcare che %%
+% inizia una sezione.  La dimensione del
+% testo è \texttt{large}.
+%
+% \DescribeMacro{\subsection} C'è %%
+% anche il secondo livello di sezioni, %
+% \texttt{\textbackslash subsection}. %%
+% Non è indentato, distinguendosi solo %
+% per la dimensione \texttt{large} e per
+% essere scritto in \textit{sans serif}.
+%
+% In astratto, sono possibili altri %%%%
+% livelli di sezionamento,  ma la classe
+% non provvede a personalizzarli, perché
+% ritiene in partenza che non siano %%%%
+% necessari a un \textit{cv} —~pur %%%%%
+% completo~—.
+%
+% Quanto al contenuto  in senso proprio,
+% la classe prevede che  il luogo adatto
+% siano i seguenti comandi.  Il loro uso
+% non dev'essere per forza vincolato %%%
+% dalle funzioni esemplificate in questa
+% documentazione,  perché questi comandi
+% possono prestarsi, anzitutto, a %%%%%%
+% funzioni analoghe a quelle previste.
+%
+% \DescribeMacro{\cvdescription} %%%
+% Il comando \textsf{description} è solo
+% accessorio ai successivi, perché serve
+% a una descrizione più dettagliata %%%%
+% d'informazioni rese d'altri comandi. %
+% \`{E}, dunque, un comando trasversale.
+% Ha un solo argomento, che la classe %%
+% stampa in dimensione \texttt{footnote}
+% e col margine sinistro allungato  pari
+% all'indentatura del titolo della %%%%%
+% sezione. Il testo è giustificato.  Non
+% serve per le informazioni di base,  ma
+% a darne una precisazione,  che a volte
+% non è strettamente indispensabile alla
+% validità dell'informazione stessa,  ma
+% che serve, per esempio, a darle un %%%
+% contesto.
+%
+% I comandi  per le informazioni di base
+% sono essenzialmente analoghi con %%%%%
+% riferimento sia all'\textit{input}, %%
+% che, in effetti , all'\textit{output}.
+% Infatti, sono sovrapponibili, tutto %%
+% sommato,  perché riconducibili al %%%%
+% comando \textsf{cvitem}. L'esposizione
+% in questa documentazione, tuttavia, %%
+% segue l'ordine classico in cui un %%%%
+% \textit{cv} presenta le informazioni.
+%
+% \DescribeMacro{\cveducation}
+% Le informazioni sui titoli conseguiti,
+% o, comunque, sulle attività formative,
+% si compongono essenzialmente di tre %%
+% dati:  la data del conseguimento (o in
+% cui l'evento formativo si tiene), il %
+% nome del titolo o dell'evento e un %%%
+% sottotitolo o l'indicazione della %%%%
+% natura del titolo o dell'evento.  %%%%
+% Questi tre dati sono, in ordine, i tre
+% argomenti del comando denominato \textsf
+% {cveducation}.  La classe stampa
+% \begin{itemize}
+%     \item la data sbandierata a destra
+%         e posta come in una colonna, %
+%         di larghezza  pari alla misura
+%         dell'indentazione del titolo %
+%         delle sezioni, e che è scritta
+%         in tondo;
+%     \item il nome del titolo o dell'evento,
+%         in neretto, e
+%     \item il sottotitolo,  o la natura
+%         del titolo o dell'evento, in %
+%         tondo, con virgola a precedere.
+% \end{itemize}
+% Questa struttura può andare bene anche
+% per esperienze lavorative,  associando
+% agli argomenti un diverso significato,
+% per analogia.  Così, possono prestarsi
+% a questa struttura i tirocini.  In %%%
+% questa struttura, il comando \textsf%%
+% {cvdescription}  è un'opzione per dare
+% informazioni sull'istituto frequentato
+% o sul luogo in cui si svolge, o s'è %%
+% svolto, il tirocinio, o, quindi, sul %
+% datore di lavoro.  In astratto, niente
+% impedisce, però, di dire istituto, %%%
+% impresa o datore di lavoro nel terzo %
+% argomento del comando \textsf{cveducation}.
+%
+% La struttura di \textsf{cveducation} è
+% abbastanza ingabbiata, in ogni caso. %
+% Questo vale, soprattutto, dal punto di
+% vista della formattazione.
+%
+% \DescribeMacro{\cvitem}  \`{E}
+% decisamente più libera, infatti, la %%
+% struttura del comando \textsf{item}, %
+% che ha solo due argomenti:
+% \begin{itemize}
+%     \item come per il comando  \textsf
+%         {cveducation}, il primo  viene
+%         scritto in tondo,  sbandierato
+%         a destra e posto come in una %
+%         colonna, pari alla misura %%%%
+%         dell'indentazione del titolo %
+%         delle sezioni, prestandosi, in
+%         ogni caso, a un contenuto  che
+%         non dev'essere necessariamente
+%         una data, ma che è bene sia, %
+%         comunque, un testo brevissimo;
+%     \item il secondo argomento è in %%
+%         tondo semplice,  ben potendosi
+%         prestare a qualsiasi contenuto
+%         e a qualsiasi formattazione.
+% \end{itemize}
+% Dunque,  nei fatti, questa struttura è
+% una generalizzazione del comando \textsf
+% {cveducation}. Si presta, per esempio,
+% all'indicazione di competenze,  perché
+% il primo argomento può indicare l'area
+% di competenza e il secondo elencare le
+% specifiche competenze  qui rientranti.
+% In particolare, il secondo argomento %
+% assorbe in uno solo il secondo e il %%
+% terzo argomento  del  comando  \textsf
+% {cveducation}.
+%
+% Il comando \textsf{description} ben %%
+% può accedere anche a \textsf{cvitem}.
+%
+% \DescribeMacro{\cvcontribution}
+% Invece, \textsf{cvcontribution} ha tre
+% argomenti, di nuovo, e nell'\textit%%%
+% {input} si distingue dal comando \textsf
+% {cveducation} in quanto il secondo è %
+% stampato in italico  e non in neretto.
+% Questo ha lo scopo precipuo di dare %%
+% massima esemplificazione all'elencazione
+% d'eventuali contributi o pubblicazioni
+% in riviste e simili, posto che il loro
+% titolo, secondo le maggiori prassi %%%
+% citazionali —~almeno, in Italia~—, va,
+% appunto, in italico.  A parte questa %
+% distinzione di formattazione,  dunque,
+% \textsf {cvcontribution} ha sempre tre
+% argomenti, che, tipicamente, sono
+% \begin{itemize}
+%     \item la data sbandierata a destra
+%         e posta come in una colonna, %
+%         di larghezza  pari alla misura
+%         dell'indentazione del titolo %
+%         delle sezioni, e che è scritta
+%         in tondo;
+%     \item il nome del titolo, in %%%%%
+%         italico, e
+%     \item ulteriori informazioni,  che
+%         vengono precedute dalla %%%%%%
+%         virgola.
+% \end{itemize}
+% Il comando \textsf{description} ben %%
+% può accedere qui:  per esempio, se è %
+% indispensabile, può essere lo spazio %
+% per un breve \textit{abstract}.  Se %%
+% un sommario non è necessario, però, il
+% consiglio è di non dare alcuna \textsf
+% {description} al contributo indicato.
+%
+%
+%
+% \iffalse
+%<*example>
+% \fi
+\begin{lstlisting}[caption={Schema di
+    \textit{cv}},style=inputexample,
+    showspaces=false,
+    label={code:cvoutline}]
+\documentclass[public]{curriculum}
+    \name{Nome}
+    \surname{Cognome}
+    \position{Laureata}
+    \birthday{01.01.2000}
+    \gender{donna}
+
+    \addresslineone{via delle Lumache, 15}
+    \addresslinetwo{00100 -- Roma, Italia}
+    \email{username@domain.com}
+    \pec{username@pecdomain.com}
+    \phone{+39 06 0000 0000}
+    \fax{+39 06 0000 0000}
+    \mobile{+39 300 000 0000}
+    \github{username}
+    \linkedin{username}
+
+    \portrait{mishlanova-unsplash.jpg}
+
+    \beforedate{ult.~agg\@.}
+    \place{Roma}
+
+\begin{document}
+    \maketitle
+    \section{Sezione [titolo]}
+    \subsection{Sottosezione [titolo]}
+        \cveducation{2018}
+            {Grado conseguito}
+            {specificazione}
+        \cvdescription{Questo è il luogo per %
+                scrivere la scuola o dare %%%%
+                altre informazioni.}
+        \cvitem{anche parole}
+            {Elemento o testo}
+        \cvcontribution{2018}
+            {Titolo contributo}
+            {informazioni}
+
+    \begin{signature}
+        {Ambiente di firma [titolo]}
+        Testo.
+    \end{signature}
+\end{document}
+\end{lstlisting}
+% \iffalse
+%</example>
+% \fi
+%
+% \begin{figure}
+%     \centering
+%     \includegraphics[height=.9\textheight]
+%         {cvoutline.pdf}
+%     \label{fig:cvoutline}
+%     \caption{Anteprima del codice \ref
+%         {code:cvoutline}}
+% \end{figure}
+%
+%
+%
+% \DescribeEnv{signature} Infine, c'è %%
+% l'ambiente \textsf{signature}. \`{E} %
+% il luogo perfetto per inserire una %%%
+% dichiarazione di veridicità dei dati e
+% delle informazioni  che il \textit{cv}
+% rende, nonché un'autorizzazione al %%%
+% loro trattamento. Questo ambiente ha %
+% un suo argomento, che corrisponde al %
+% titoletto che precede la dichiarazione
+% e l'autorizzazione, o, comunque, il %%
+% testo che lo scrivente vuole inserire.
+% Questo titoletto è di pari livello, in
+% astratto, a quello delle sezioni di %%
+% primo livello, ma non ha indentazione.
+% Il testo dell'ambiente, invece, se %%%
+% dato, è stampato in \texttt{small} e %
+% sta giustificato.
+%
+% L'ambiente \textsf{signature} termine,
+% nell'\textit{output} con l'indicazione
+% della data (eventualmente, anche del %
+% luogo) di scrittura del \textit{cv} e,
+% poi, con un'area per la sottoscrizione.
+%
+% \subsection{La lettera di presentazione}
+% \DescribeEnv{introduction}
+% La classe, per ultimo, prevede un'area
+% per una lettera di presentazione. %%%%
+% L'utente, dunque, può precedere il suo
+% \textit{curriculum vitae et studiorum}
+% con una lettera introduttiva,  con suo
+% oggetto e espressamente indirizzata %%
+% a uno specifico destinatario.
+%
+% L'ambiente ha quattro argomenti %%%%%%
+% obbligatori:
+% \begin{enumerate}
+%     \item il nome del destinatario, %%
+%         stampato in neretto,
+%     \item l'indirizzo del destinatario
+%         completo, per cui l'utente può
+%         anche andare a capo, col %%%%%
+%         comando \texttt{\textbackslash
+%         par}, e che la classe stampa %
+%         in tondo,
+%     \item l'oggetto, che la classe %%%
+%         stampa in neretto, e, infine,
+%     \item la formula introduttiva.
+% \end{enumerate}
+% I primi due argomenti compongono il %%
+% destinatario.
+%
+% La classe stampa il destinatario in %%
+% uno spazio apposito nella parte destra
+% della gabbia del testo.  Il testo è, %
+% comunque, sbandierato a sinistra.
+%
+% Anche l'oggetto è stampato sbandierato
+% a sinistra,  ma occupa l'intera gabbia
+% del testo.
+%
+% Il corpo della lettera, comprensivo %%
+% della formula introduttiva, invece, %%
+% è giustificato e sta in una gabbia %%%
+% dai margini ristretti.  Questo per %%%
+% facilitarne la lettura, dato che non è
+% un mero insieme di dati e informazioni
+% in elenco ordinato, ma, appunto, un %%
+% testo.
+%
+% Quanto alla chiusura della lettera, la
+% classe non prevede un apposito comando
+% per la formula di saluto finale, anche
+% se l'utente può, certo, apporla di suo
+% proposito.
+%
+% Invece, la classe prevede, a seguire %
+% l'ambiente \textsf{introduction}, lo %
+% spazio per la sottoscrizione.  \`{E} %
+% lo stesso spazio  creato dall'ambiente
+% \textsf{signature}. Però, a differenza
+% di  quest'ultimo,  l'ambiente  \textsf
+% {introduction} non ristampa luogo,  se
+% l'utente l'ha specificato, e data di %
+% firma.  D'altra parte, l'utente può %%
+% può valutare di non usare l'ambiente %
+% \textsf{signature} a chiusura del %%%%
+% \textit{cv}, per limitarsi a firmare %
+% la lettera di presentazione stessa. In
+% quest'ultimo caso, semmai, il problema
+% è spostare eventuali dichiarazioni e %
+% le autorizzazioni al trattamento dei %
+% dati a fine lettera introduttiva.
+%
+% \DescribeEnv{enclosed}  Per ultimo, la
+% classe mette a disposizione l'apposito
+% ambiente per l'elenco d'eventuali %%%%
+% allegati alla lettera introduttiva. %%
+% C'è un ambiente obbligatorio e serve %
+% a esplicitare che l'elenco associato %
+% è relativo agli allegati. Il contenuto
+% dell'ambiente è un elenco: pertanto, %
+% le voci devono essere precedute dal %%
+% comando \texttt{\textbackslash item}.
+%
+% Terminata la lettera introduttiva, %%%
+% è, dunque, possibile incominciare il %
+% vero e proprio \textit{cv}. A questo %
+% fine,  è sufficiente inserire di nuovo
+% \texttt{\textbackslash maketitle}, %%%
+% comando che interrompe la pagina e %%%
+% stampa nuovamente l'intestazione.  Nel
+% caso, i margini della gabbia del testo
+% si ripristinano. La prima pagina del %
+% \textit{cv} è, dunque, sempre priva di
+% testatine e piedini. Inoltre, prosegue
+% la numerazione delle pagine, senza %%%
+% azzeramento, tra la lettera e il \textit
+% {cv}.   Inoltre, tra lettera e \textit
+% {cv}, niente cambia con riferimento %%
+% alle opzioni di riservatezza  sui dati
+% personali.
+%
+% Nulla impedisce d'usare la classe, con
+% l'ambiente \texttt{introduction}, %%%%
+% eclusivamente per scrivere lettere %%%
+% motivazionali o di presentazione.
+%
+%
+%
+% \iffalse
+%<*example>
+% \fi
+\begin{lstlisting}[caption={Schema di
+        lettera di presentazione},
+        style=inputexample,
+        showspaces=false,
+        label={code:introduction}]
+\documentclass{curriculum}
+    \name{Nome}
+    \surname{Cognome}
+    \position{Laureata}
+    \birthday{01.01.2000}
+    \gender{donna}
+
+    \addresslineone{via delle Lumache, 15}
+    \addresslinetwo{00100 -- Roma, Italia}
+    \email{username@domain.com}
+    \pec{username@pecdomain.com}
+    \phone{+39 06 0000 0000}
+    \fax{+39 06 0000 0000}
+    \mobile{+39 300 000 0000}
+    \github{username}
+    \linkedin{username}
+
+    \portrait{mishlanova-unsplash.jpg}
+
+    \place{Roma}
+
+\usepackage{polyglossia}
+    \setmainlanguage{italian}
+    \SetLanguageKeys{italian}{indentfirst=false}
+
+\begin{document}
+    \maketitle
+    \begin{introduction}
+            {Società Alfa s.r.l\@.}
+            {Area \textit{recruiter}\par
+                via delle Lumache, 19\par
+                00100 – Roma, Italia\par
+                \textbf{\MakeUppercase{pec}}
+                \texttt{alfasrl@fakepec.it}}
+            {Lettera motivazionale
+                e invio \textit{cv}
+                (\textit{infra})}
+            {Gentili,}
+        ho visto il Vs.~avviso di selezione.
+        Dinnanzi all'opportunità di lavorare
+        presso la Vs.~società nutro sfrenato
+        entusiamo.
+
+        In allegato unico trovate il \textit
+        {curriculum vitae et studiorum}, nel
+        quale riassumo quelle esperienze e %
+        quelle competenze  che mi rendono un
+        profilo assai adatto alla Vs.~ricer%
+        ca.
+
+        Gradirei molto tenere un incontro %%
+        conoscitivo.
+
+        Resto in attesa del Vs.~riscontro.
+
+        Distinti saluti,
+    \end{introduction}
+    \begin{enclosed}{Allegati}
+        \item \textit{curriculum vitae} di %
+            seguito e, a parte,
+        \item modulo domanda compilato,
+        \item copia digitale del documento %
+            d'identità,
+        \item lettera di referenza dell'av%%
+            v.a~Sabrina Bianchi,
+        \item lettera di referenza dell'av%%
+            v.~Mario Rossi.
+    \end{enclosed}
+\end{document}
+\end{lstlisting}
+% \iffalse
+%</example>
+% \fi
+%
+% \begin{figure}
+%     \centering
+%     \includegraphics[height=.9\textheight]
+%         {introduction.pdf}
+%     \label{fig:introduction}
+%     \caption{Anteprima del codice \ref
+%         {code:introduction}}
+% \end{figure}
+%
+%
+%
+% \StopEventually{}
+% \iffalse
+%<*class>
+% \fi
+% \section{Il codice}
+% \subsection{Nuovi comandi}
+% Il codice esordisce con l'impostazione
+% dei comandi relativi ai dati personali
+% e con la previsione di due gruppi, che
+% raccolgono questi stessi dati.
+%    \begin{macrocode}
+\DeclareRobustCommand\name[1]
+    {\gdef\@name{#1}}
+\DeclareRobustCommand\surname[1]
+    {\gdef\@surname{#1}}
+
+\DeclareRobustCommand\matter[1]
+    {\gdef\@matter{#1}}
+    \global\let\@matter\@empty
+
+\DeclareRobustCommand\beforedate[1]
+    {\gdef\@beforedate{#1}}
+    \global\let\@beforedate\@empty
+\DeclareRobustCommand\place[1]
+    {\gdef\@place{#1}}
+    \global\let\@place\@empty
+
+\DeclareRobustCommand\position[1]
+    {\gdef\@position{#1}}
+    \global\let\@position\@empty
+\DeclareRobustCommand\birthday[1]
+    {\gdef\@birthday{#1}}
+    \global\let\@birthday\@empty
+\DeclareRobustCommand\gender[1]
+    {\gdef\@gender{#1}}
+    \global\let\@gender\@empty
+
+\DeclareRobustCommand\addresslineone[1]
+    {\gdef\@addresslineone{#1}}
+    \global\let\@addresslineone\@empty
+\DeclareRobustCommand\addresslinetwo[1]
+    {\gdef\@addresslinetwo{#1}}
+    \global\let\@addresslinetwo\@empty
+
+\DeclareRobustCommand\email[1]
+    {\gdef\@email{#1}}
+    \global\let\@email\@empty
+
+\DeclareRobustCommand\pec[1]
+    {\gdef\@pec{#1}}
+    \global\let\@pec\@empty
+
+\DeclareRobustCommand\phone[1]
+    {\gdef\@phone{#1}}
+    \global\let\@phone\@empty
+\DeclareRobustCommand\fax[1]
+    {\gdef\@fax{#1}}
+    \global\let\@fax\@empty
+
+\DeclareRobustCommand\mobile[1]
+    {\gdef\@mobile{#1}}
+    \global\let\@mobile\@empty
+
+\DeclareRobustCommand\linkedin[1]
+    {\gdef\@linkedin{#1}}
+    \global\let\@linkedin\@empty
+\DeclareRobustCommand\github[1]
+    {\gdef\@github{#1}}
+    \global\let\@github\@empty
+
+\DeclareRobustCommand\portrait[1]
+    {\gdef\@portrait{#1}}
+    \global\let\@portrait\@empty
+
+%    \end{macrocode}
+% I gruppi sono quelli attraverso cui la
+% classe opera  per attuare le eventuali
+% opzioni di riservatezza,  che l'utente
+% voglia, eventualmente, attivare, con %
+% \texttt{public} o \texttt{privacy}.
+%
+% \subsection{Opzioni della classe}
+% Di \textit{default},  la classe stampa
+% tutti i dati che l'utente fornisce,  a
+% meno che l'utente non indichi opzioni,
+% che dispongano la soppressione d'uno o
+% più dati personali.  Tra le opzioni, %
+% è di \textit{default} la stampa del %%
+% documento a colori, anche se l'opzione
+% \texttt{blackandwhite} consente di %%%
+% stampare il documento in bianco e nero
+% e grigio, salvo solo l'eccezione della
+% data e dell'oggetto del documento e, %
+% ovviamente, dell'eventuale fotografia.
+%    \begin{macrocode}
+\DeclareOption{twocolumn}{\OptionNotUsed}
+
+\DeclareOption{cvcolors}{\DeclareRobustCommand{\cvcolors}{%
+        \definecolor{cvblue}{rgb}{0.25,0.25,0.50}
+        \definecolor{cvgreen}{rgb}{0.25,0.50,0.25}
+        \definecolor{cvprename}{rgb}{0.35,0.60,0.35}
+        \definecolor{cvsurname}{rgb}{0.25,0.50,0.25}
+        \color{cvblue}}}
+\DeclareOption{blackandwhite}{\renewcommand{\cvcolors}{%
+        \definecolor{cvblue}{gray}{0.25}
+        \definecolor{cvgreen}{gray}{0.25}
+        \definecolor{cvprename}{gray}{0.25}
+        \definecolor{cvsurname}{gray}{0.00}
+        \color{black}}}
+
+\DeclareOption{nobirthdaynogender}{\renewcommand{\birthday}[1]{\gdef\@birthday{\@empty}%
+        \let\@birthday\@empty}
+    \renewcommand{\gender}[1]{\gdef\@gender{\@empty}%
+        \let\@gender\@empty}}
+\DeclareOption{noaddress}{\renewcommand{\addresslineone}[1]{\gdef\@addresslineone{\@empty}%
+        \let\@addresslineone\@empty}
+    \renewcommand{\addresslinetwo}[1]{\gdef\@addresslinetwo{\@empty}%
+        \let\@addresslinetwo\@empty}
+    \renewcommand{\pec}[1]{\gdef\@pec{\@empty}%
+        \let\@pec\@empty}
+    \renewcommand{\phone}[1]{\gdef\@phone{\@empty}%
+        \let\@phone\@empty}
+    \renewcommand{\fax}[1]{\gdef\@fax{\@empty}%
+        \let\@fax\@empty}}
+\DeclareOption{letterhead}{\ExecuteOptions{nobirthdaynogender}
+    \renewcommand{\portrait}[1]{\gdef\@portrait{\@empty}%
+        \let\@portrait\@empty}}
+\DeclareOption{privacy}{\ExecuteOptions{nobirthdaynogender,public}
+    \renewcommand{\pec}[1]{\gdef\@pec{\@empty}%
+        \let\@pec\@empty}}
+\DeclareOption{public}{\ExecuteOptions{noaddress}
+    \renewcommand{\mobile}[1]{\gdef\@mobile{\@empty}%
+        \let\@mobile\@empty}}
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+
+%    \end{macrocode}
+% L'utente può inserire opzioni che la %
+% classe  non  prevede,  tranne  \texttt
+% {twocolumn}: \textsf{curriculum}, %%%%
+% espressamente, la esclude. Quanto alle
+% altre eventuali opzioni, sono possibili,
+% ma sconsigliate, viste le ripercussioni.
+%
+% Dunque, \textsf{curriculum} esegue, di
+% \textit{default}, \texttt{cvcolors}  e
+% imposta il documento in formato %%%%%%
+% \textsc{iso} A4, con testo corrente di
+% di dimensione 12pt.
+%    \begin{macrocode}
+\ExecuteOptions{cvcolors}
+\ProcessOptions\relax
+\LoadClass[12pt,a4paper]{article}
+
+%    \end{macrocode}
+%
+% \subsection{Caricamento dei pacchetti fondamentali}
+% Fatte queste impostazioni fondamentali,
+% la classe carica i pacchetti, continua
+% a personalizzare il \textit{layout} %%
+% del documento e specifica l'essenziale
+% pacchetto \texttt{hyperref}.
+%    \begin{macrocode}
+\RequirePackage{array}
+\RequirePackage{changepage}
+\RequirePackage[ddmmyyyy]{datetime}
+    \newcommand{\defaulttoday}
+        {\twodigit{\day}.\twodigit{\month}.\twodigit{\year}}
+\RequirePackage{fancyhdr}
+    \setlength{\hoffset}{8pt}
+    \setlength{\oddsidemargin}{0pt}
+    \setlength{\textwidth}{437pt}
+    \setlength{\marginparsep}{0pt}
+    \setlength{\marginparwidth}{0pt}
+    \setlength{\voffset}{-42pt}
+    \setlength{\topmargin}{0pt}
+    \setlength{\headheight}{25pt}
+    \setlength{\headsep}{16pt}
+    \setlength{\textheight}{668pt}
+    \AtEndDocument{\label{lastpage}}
+    \fancyhf{}
+    \fancyhf[HC]{\color{gray}{\footnotesize%
+        \begin{spacing}{.8}
+            \textbf{\@name\ \@surname} \ifx\@position\@empty\else
+                ---\ \textit{\bfseries\@position}\fi\par
+            \ifx\@matter\@empty\else
+                \@matter\fi
+        \end{spacing}}}
+    \fancyhf[FC]{\color{gray}{\footnotesize%
+        \begin{spacing}{.8}
+            \MakeUppercase{\bfseries\@name\ \@surname}\par
+            \ifx\@addresslineone\@empty%
+                \else
+                \@addresslineone%
+                \ifx\@addresslinetwo\@empty%
+                    \else
+                    \enspace\@addresslinetwo\fi\par\fi
+            \ifx\@phone\@empty%
+                \ifx\@fax\@empty%
+                    \ifx\@mobile\@empty%
+                        \else\faMobile\ \@mobile\par\fi
+                    \else\faFax\ \@fax\ $\bullet$\ \faMobile\ \@phone\par\fi
+                \else\faPhoneSquare\ \@phone\ifx\@fax\@empty%
+                    \ifx\@mobile\@empty\par
+                    \else\ $\bullet$\ \faMobile\ \@mobile\par\fi
+                    \else\ $\bullet$\ \faFax\ \@fax%
+                    \ifx\@mobile\@empty\par
+                        \else\ $\bullet$\ \faMobile\ \@mobile\par\fi\fi\fi
+            \ifx\@email\@empty%
+                \ifx\@pec\@empty\else\href{mailto:\@pec}{\faCertificate\ \@pec}\par\fi
+                \else
+                \href{mailto:\@email}{\faEnvelopeO\ \@email}%
+                \ifx\@pec\@empty\par\else\ $\bullet$\ \href{mailto:\@pec}{\faCertificate\ \@pec}\fi\par\fi
+            \ifx\@linkedin\@empty
+                \ifx\@github\@empty
+                \else
+                \href{https://github.com/\@github}
+                    {\faGithub\ \@github}\par\fi\else
+                \href{https://linkedin.com/in/\@linkedin}
+                    {\faLinkedinSquare\ \@linkedin}
+                \ifx\@github\@empty\else$\bullet$\ \href{https://github.com/\@github}
+                    {\faGithub\ \@github}\fi\fi%
+        \end{spacing}}}
+    \fancyhf[FR]{\color{darkgray}\em\footnotesize%
+        \begin{spacing}{.8}\hspace{1pt}\par%
+            \thepage/\pageref{lastpage}
+        \end{spacing}}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+    \renewcommand{\headruleskip}{15mm}
+    \renewcommand{\footruleskip}{15pt}
+\RequirePackage{fontawesome}
+\RequirePackage{graphicx}
+\RequirePackage{ifthen}
+\RequirePackage{paralist}
+    \RequirePackage{enumitem}
+    \setlist[itemize]{label={-},noitemsep,topsep=0pt}
+    \setlist[enumerate]{noitemsep,topsep=0pt}
+    \setlist[description]{noitemsep,topsep=0pt}
+\RequirePackage{ragged2e}
+\RequirePackage{setspace}
+\RequirePackage{tabularx}
+\RequirePackage{xcolor}
+    \cvcolors
+\RequirePackage{xparse}
+
+\pagestyle{fancy}
+\raggedbottom
+
+\RequirePackage{hyperref}
+
+%    \end{macrocode}
+%
+% \subsection{Personalizzazione di sezioni e titoli}
+% A questo punto, il codice è pronto per
+% descrivere l'intestazione del  \textit
+% {cv}.  A questo proposito, il codice %
+% sfrutta il comune comando \texttt{\textbackslash
+% maketitle}.
+%    \begin{macrocode}
+\renewcommand{\maketitle}{\clearpage%
+    \thispagestyle{empty}%
+    \noindent\begingroup%
+    \begin{minipage}[m][125pt][t]{.40\textwidth}
+        \begingroup%
+        \Large%
+        \textcolor{cvprename}{\bfseries\@name}
+        \textcolor{cvsurname}{\mbox{\bfseries\@surname}}\par
+        \large
+        \textit{\@position}\par\medskip
+        \small
+        \ifx\@birthday\@empty%
+            \else
+            \faBirthdayCake\ \@birthday\par\fi
+        \ifthenelse{\equal{\@gender}{F}
+            \OR
+            \equal{\@gender}{f}
+            \OR
+            \equal{\@gender}{Female}
+            \OR
+            \equal{\@gender}{Female}
+            \OR
+            \equal{\@gender}{Woman}
+            \OR
+            \equal{\@gender}{woman}
+            \OR
+            \equal{\@gender}{Femmina}
+            \OR
+            \equal{\@gender}{femmina}
+            \OR
+            \equal{\@gender}{Donna}
+            \OR
+            \equal{\@gender}{donna}}
+            {\faVenus\ \@gender\par}
+            {\ifthenelse{\equal{\@gender}{M}
+                \OR
+                \equal{\@gender}{m}
+                \OR
+                \equal{\@gender}{Male}
+                \OR
+                \equal{\@gender}{male}
+                \OR
+                \equal{\@gender}{Man}
+                \OR
+                \equal{\@gender}{man}
+                \OR
+                \equal{\@gender}{Maschio}
+                \OR
+                \equal{\@gender}{maschio}
+                \OR
+                \equal{\@gender}{Uomo}
+                \OR
+                \equal{\@gender}{uomo}}
+                {\faMars\ \@gender\par}
+                {\if\@gender\@empty\else\@gender\fi}}\par
+        \bigskip
+        \normalsize
+        \ifx\@matter\@empty%
+            \else
+            {\bfseries\@matter}\par\fi
+        \ifx\@beforedate\@empty%
+            \else
+            \@beforedate~\fi
+        \ifx\@place\@empty%
+            \else
+            \@place\ \fi\defaulttoday\par
+        \endgroup
+    \end{minipage}
+    \hspace{.02pt}
+    \begin{minipage}[m][125pt][t]{.35\textwidth}
+        \begingroup
+        \footnotesize
+        \ifx\@addresslineone\@empty%
+            \else
+            \@addresslineone\par\fi
+        \ifx\@addresslinetwo\@empty%
+            \else
+            \@addresslinetwo\par\fi
+        \ifx\@email\@empty%
+            \else
+            \href{mailto:\@email}{\faEnvelopeO\ \@email}\par\fi
+        \ifx\@pec\@empty%
+            \else
+            \href{mailto:\@pec}{\faCertificate\ \@pec}\par\fi
+        \ifx\@phone\@empty%
+            \else
+            \faPhone\ \@phone\par\fi
+        \ifx\@fax\@empty%
+            \else
+            \faFax\ \@fax\par\fi
+        \ifx\@mobile\@empty%
+            \else
+            \faMobile\ \@mobile\par\fi
+        \ifx\@linkedin\empty%
+            \else
+            \href{https://linkedin.com/in/\@linkedin}
+                {\faLinkedinSquare\ \@linkedin}\par\fi
+        \ifx\@github\empty%
+            \else
+            \href{https://github.com/\@github}
+                {\faGithub\ \@github}\par\fi
+        \endgroup
+    \end{minipage}
+    \ifx\@portrait\@empty%
+        \else
+        \hfill\begin{minipage}[m][125pt][t]{.23\textwidth}
+            \fbox{\includegraphics
+                [width=.75\textwidth]
+                {\@portrait}}
+        \end{minipage}\fi
+    \endgroup\bigskip}
+
+%    \end{macrocode}
+%
+% Di seguito, personalizza il formato %%
+% dell'intestazione delle sezioni.
+%    \begin{macrocode}
+\setcounter{secnumdepth}{0}
+\renewcommand{\section}{%
+    \@startsection
+    {section}{1}{0pt}{8pt}%
+    {4pt}{\noindent\large\scshape\color{cvgreen}\rule[2pt]{76.475pt}{4pt}\hspace{4.37pt}}}
+\renewcommand{\subsection}{%
+    \@startsection
+    {subsection}{1}{0pt}{4pt}%
+    {4pt}{\noindent\large\sffamily\color{cvgreen}}}
+
+%    \end{macrocode}
+%
+%
+% Infine, la classe crea comandi e %%%%%
+% ambienti.
+%
+% Anzitutto, la classe crea i comandi %%
+% per il contenuto in senso stretto  del
+% \textit{cv}.
+%    \begin{macrocode}
+\newcommand{\cveducation}[3]{\vspace*{4pt}\noindent%
+    \begingroup%
+    \setlength{\tabcolsep}{0pt}%
+    \begin{tabular}
+        {>{\raggedleft\raggedbottom}p{.175\textwidth}
+            @{\hskip .01\textwidth}
+            >{\raggedright\raggedbottom}p{.815\textwidth}}
+        #1 & \textbf{#2}, #3
+    \end{tabular}
+    \endgroup\par}
+\newcommand{\cvdescription}[1]{\vspace*{-2pt}\noindent%
+    \begingroup%
+    \setlength{\tabcolsep}{0pt}%
+    \begin{tabular}
+        {>{\raggedleft\raggedbottom}p{.185\textwidth}
+            >{\raggedright\raggedbottom}p{.815\textwidth}}
+        & \footnotesize\setstretch{.8}#1
+    \end{tabular}
+    \endgroup\par}
+\newcommand{\cvitem}[2]{\vspace*{4pt}\noindent%
+    \begingroup%
+    \setlength{\tabcolsep}{0pt}%
+    \begin{tabular}
+        {>{\raggedleft\raggedbottom}p{.175\textwidth}
+            @{\hskip .01\textwidth}
+            >{\raggedright\raggedbottom}p{.815\textwidth}}
+        #1 & #2
+    \end{tabular}
+    \endgroup\par}
+\newcommand{\cvcontribution}[3]{\vspace*{4pt}\noindent%
+    \begingroup%
+    \setlength{\tabcolsep}{0pt}%
+    \begin{tabular}
+        {>{\raggedleft\raggedbottom}p{.175\textwidth}
+            @{\hskip .01\textwidth}
+            >{\raggedright\raggedbottom}p{.815\textwidth}}
+        #1 & \textit{#2}, #3
+    \end{tabular}
+    \endgroup\par}
+
+%    \end{macrocode}
+%
+% Poi, la classe crea un ambiente per la
+% sottoscrizione del \textit{cv}, in cui
+% l'utente possa pure dichiarare la %%%%
+% veridicità di dati e informazioni e %%
+% autorizzare il relativo trattamento.
+%    \begin{macrocode}
+\newenvironment{signature}[1]{\begingroup%
+    \renewcommand{\section}{%
+        \@startsection%
+        {section}{1}{0pt}{8pt}%
+        {4pt}{\noindent\large\scshape\color{cvgreen}}}%
+    \section*{#1}
+    \setlength\parindent{0pt}%
+    \small\setstretch{.8}}
+    {\par\nopagebreak\smallskip\ifx\@place\@empty%
+        \defaulttoday\else
+        \@place\ \defaulttoday\fi.\par\nopagebreak\vskip 1cm
+        \hfill\makebox[.35\textwidth][c]
+        {\rule[0pt]{.35\textwidth}{0.15pt}}%
+        \hspace*{.1\textwidth}\par\nopagebreak
+        \hfill\makebox[.35\textwidth][c]
+        {\footnotesize\textsc{\@name\ \@surname}}%
+        \hspace*{.1\textwidth}\par
+        \endgroup}
+
+%    \end{macrocode}
+%
+% Infine, la classe crea l'ambiente %%%%
+% \textsf{introduction},  per la lettera
+% di presentazione.
+%    \begin{macrocode}
+\newenvironment{introduction}[4]{%
+    \begin{adjustwidth}{.65\textwidth}{0pt}%
+        \setlength{\parindent}{0pt}%
+        \raggedright%
+        {\bfseries#1}\par
+        #2
+    \end{adjustwidth}%
+    \begin{flushleft}
+        {\bfseries#3}
+    \end{flushleft}%
+    \begingroup%
+    \begin{adjustwidth}{45pt}{45pt}%
+        \begingroup%
+        \setlength{\parskip}{12pt}%
+        \noindent#4\par}
+    {\endgroup\vskip 1cm
+        \hfill\makebox[.35\textwidth][c]
+        {\rule[0pt]{.35\textwidth}{0.15pt}}%
+        \hspace*{.1\textwidth}\par\nopagebreak
+        \hfill\makebox[.35\textwidth][c]
+        {\footnotesize\textsc{\@name\ \@surname}}%
+        \hspace*{.1\textwidth}\par
+    \end{adjustwidth}%
+    \endgroup}
+
+%    \end{macrocode}
+%
+% A corredo della lettera di motivazione
+% o di presentazione, la classe crea %%%
+% l'ambiente \textsf{enclosed}, per fare
+% un elenco degli allegati.
+%    \begin{macrocode}
+\newenvironment{enclosed}[1]
+    {\begin{minipage}[t]{.1725\textwidth}%
+        \rule[0pt]{1cm}{0pt}\par\RaggedLeft{\emph{#1}}
+    \end{minipage}\hspace{.005\textwidth}
+    \begin{minipage}[t]{.8225\textwidth}%
+        \rule[0pt]{5cm}{0pt}\begin{enumerate}}
+    {\end{enumerate}\end{minipage}}
+%    \end{macrocode}
+% \iffalse
+%</class>
+% \fi
+%
+%
+%
+% \iffalse
+%<*data>
+\Title{The curriculum class}
+\Author{Francesco Contini}
+\Language{it-IT}
+\Date{2025-08-21}
+\Creator{LuaLaTeX}
+\Subject{Curriculum class}
+\Keywords{cv\sep class\sep latex}
+%</data>
+% \fi
+%
+%
+% \iffalse
+%<*bib>
+    @online{contini2025,
+        author={Contini, Francesco},gender={sm},
+        title={\texttt{curriculum.cls}},
+        organization={GitHub},
+        url={https://github.com/francesco-contini/curriculumclass},
+        date={2025-08-21}}
+    @manual{danaux2024,
+        author={Danaux, Xavier},gender={sm},
+        title={\texttt{moderncv}\ User Guide},
+        editor={Adlkofer, Daniel and Lachnit, Stephan},
+        version={2.4.1},
+        publisher={\textsc{ctan}},
+        url={https://ctan.org/pkg/moderncv},
+        date={2024-07-18}}
+    @manual{ghersi2012,
+        author={Ghersi, Andrea},gender={sm},
+        title={MyCV},
+        version={1.16},
+        publisher={\textsc{ctan}},
+        url={https://ctan.org/pkg/mycv},
+        date={2012-05-20}}
+    @manual{mazzamuto2020,
+        author={Mazzamuto, Giacomo},gender={sm},
+        title={Documentation of the \LaTeX\ class
+            \texttt{europasscv.cls}},
+        publisher={\textsc{ctan}},
+        url={https://ctan.org/pkg/europasscv},
+        date={2020-10-31}}
+    @online{maier2001,
+        author={Maier, Philipp},gender={sm},
+        title={\texttt{cv.sty}},
+        subtitle={A package for creating a curriculum
+            vitae},
+        publisher={\textsc{ctan}},
+        url={https://ctan.org/pkg/cv},
+        date={2001-03-01}}
+    @online{mishlanova2021,
+        author={Mishlanova, Elena},gender={sf},
+        title={Donna in camicia},
+        type={immagine},
+        organization={unsplash},
+        url={https://unsplash.com/it/foto/donna-in-camicia-rosa-e-pantaloni-grigi-XGXn9JiSEvM},
+        urldate={2025-08-25},
+        date={2021-04-21},
+        addendum={ritaglio}}
+    @online{prasad2023,
+        author={Prasad, Sumukh},gender={sm},
+        title={\texttt{curriculum-vitae.cls}},
+        organization={GitHub},
+        version={2.0},
+        url={https://github.com/SumukhPrasad/latex-curriculum-vitae},
+        date={2025-07-09}}
+    @online{scrivena2018,
+        author={Scrivena, Zach},gender={sm},
+        title={\texttt{simpleresumecv.cls}},
+        version={3.0},
+        publisher={GitHub},
+        url={https://github.com/zachscrivena/simple-resume-cv},
+        date={2018-12-02}}
+    @manual{verna2010,
+        author={Verna, Didier},gender={sm},
+        title={Curve – a \LaTeXe\ class package
+            for making \textbf{Cur}ricula \textbf
+            {V}ita\textbf{e}},
+        version={1.16},
+        publisher={\textsc{ctan}},
+        url={https://ctan.org/pkg/curve},
+        date={2010-12-14}}
+%</bib>
+% \fi
+%
+%
+%
+% \Finale
+% \endinput
+% \fi
